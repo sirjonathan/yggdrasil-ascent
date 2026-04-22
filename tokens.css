@@ -1,0 +1,257 @@
+/* =========================================================
+   Bloom & Build — Foundations
+   Colors, type, spacing, radii, shadows
+   ========================================================= */
+
+/* ----- Fonts (Google Fonts; swap to local if vendored) ----- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ---------- Brand colors ---------- */
+  --teal-50:  #F0F6F6;
+  --teal-100: #DCEAEA;
+  --teal-200: #B9D5D6;
+  --teal-300: #8EBBBD;
+  --teal-400: #6EA5A7;
+  --teal-500: #549193;  /* brand teal */
+  --teal-600: #437578;
+  --teal-700: #355D5F;
+  --teal-800: #284647;
+  --teal-900: #1A2E2F;
+
+  --orange-50:  #FEF4EE;
+  --orange-100: #FCE3D3;
+  --orange-200: #F9C5A7;
+  --orange-300: #F4A57B;
+  --orange-400: #F08E5E;
+  --orange-500: #ED7F4A;  /* brand orange */
+  --orange-600: #D66A38;
+  --orange-700: #A9522B;
+  --orange-800: #7C3C20;
+  --orange-900: #4F2614;
+
+  /* ---------- Neutrals ---------- */
+  --ink-navy:   #0B1220;      /* body text / immersive dark */
+  --ink-2:      #1F2937;
+  --ink-3:      #475467;
+  --ink-4:      #6B7280;
+  --ink-5:      #9AA3AF;
+
+  --cream:      #F7F5EE;      /* warm light bg */
+  --cream-deep: #EEEADF;
+  --mint-tint:  #EEF4F1;      /* soft mint background */
+  --paper:      #FFFFFF;
+  --rule:       #E6E1D4;      /* hairline on cream */
+  --rule-cool:  #E5EAEA;      /* hairline on white */
+
+  /* ---------- Semantic ---------- */
+  --fg-1: var(--ink-navy);
+  --fg-2: var(--ink-3);
+  --fg-3: var(--ink-4);
+  --fg-inverse: var(--cream);
+  --bg-page: var(--cream);
+  --bg-surface: var(--paper);
+  --bg-immersive: var(--ink-navy);
+  --brand: var(--teal-500);
+  --brand-ink: var(--teal-700);
+  --accent: var(--orange-500);
+  --accent-ink: var(--orange-700);
+  --link: var(--teal-600);
+  --focus-ring: color-mix(in oklch, var(--orange-500) 60%, transparent);
+
+  /* Category colors (semantic by unit theme) */
+  --cat-stem:  var(--teal-500);
+  --cat-art:   var(--orange-500);
+  --cat-seg:   #7A8C5E;   /* Social-Emotional Growth — sage */
+  --cat-story: #6E4E8F;   /* Storytelling — plum */
+
+  /* ---------- Type ---------- */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 36px;
+  --fs-4xl: 48px;
+  --fs-5xl: 64px;
+  --fs-6xl: 84px;
+
+  --lh-tight: 1.08;
+  --lh-snug:  1.25;
+  --lh-body:  1.55;
+  --lh-loose: 1.75;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.14em;
+
+  /* ---------- Spacing ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  /* ---------- Radius ---------- */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;   /* default */
+  --r-lg: 12px;
+  --r-xl: 18px;
+  --r-pill: 999px;
+
+  /* ---------- Borders ---------- */
+  --bw-hair: 1px;
+  --bw-card: 1.5px;   /* signature teal/orange outline */
+  --bw-thick: 2.5px;
+
+  /* ---------- Shadows ---------- */
+  --sh-sm: 0 1px 2px rgba(11,18,32,0.06);
+  --sh-md: 0 4px 12px -2px rgba(11,18,32,0.08), 0 2px 4px -2px rgba(11,18,32,0.06);
+  --sh-lg: 0 18px 36px -12px rgba(11,18,32,0.18);
+  --sh-paper: 0 1px 0 rgba(11,18,32,0.04), 0 8px 24px -16px rgba(11,18,32,0.12);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(.2,.7,.2,1);
+  --ease-bounce: cubic-bezier(.34,1.56,.64,1);
+  --dur-fast: 140ms;
+  --dur-med: 240ms;
+  --dur-slow: 420ms;
+}
+
+/* =========================================================
+   Semantic element styles
+   ========================================================= */
+html, body {
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  background: var(--bg-page);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  text-wrap: balance;
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings: "opsz" 72;
+  text-wrap: balance;
+}
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.01em;
+}
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+}
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--brand-ink);
+}
+p, .body {
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+small, .caption {
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+}
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  letter-spacing: 0.01em;
+}
+.dark-section, .immersive {
+  background: var(--bg-immersive);
+  color: var(--cream);
+}
+.dark-section h1, .dark-section h2, .dark-section h3,
+.immersive h1, .immersive h2, .immersive h3 { color: var(--cream); }
+
+/* =========================================================
+   Utility-ish primitives used across cards/ui kits
+   ========================================================= */
+.b-card {
+  background: var(--bg-surface);
+  border: var(--bw-card) solid var(--teal-500);
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-paper);
+}
+.b-card--orange { border-color: var(--orange-500); }
+.b-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 600;
+  background: var(--teal-50); color: var(--teal-700);
+  border: 1px solid var(--teal-200);
+}
+.b-chip--orange { background: var(--orange-50); color: var(--orange-700); border-color: var(--orange-200); }
+.b-chip--seg { background:#EFF2E7; color:#4E5E33; border-color:#D6DEC0; }
+.b-chip--story { background:#F1EDF5; color:#4B3868; border-color:#DCD3E6; }
+
+.b-badge-classified {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  background: var(--orange-500); color: white;
+  font-family: var(--font-mono); font-weight: 700;
+  font-size: var(--fs-xs); letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  border-radius: var(--r-pill);
+  box-shadow: 0 2px 0 var(--orange-700);
+}
+
+.b-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: var(--teal-500); color: white;
+  border: none; border-radius: var(--r-md);
+  font-family: var(--font-sans); font-weight: 600; font-size: var(--fs-base);
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--teal-700);
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast);
+}
+.b-btn:hover { background: var(--teal-600); }
+.b-btn:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--teal-700); }
+.b-btn--accent { background: var(--orange-500); box-shadow: 0 2px 0 var(--orange-700); }
+.b-btn--accent:hover { background: var(--orange-600); }
+.b-btn--ghost {
+  background: transparent; color: var(--teal-700);
+  border: 1.5px solid var(--teal-500); box-shadow: none;
+}
+.b-btn--ghost:hover { background: var(--teal-50); }
